@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "158176338684",
+    "project_id": "nota-5c41d",
+    "storage_bucket": "nota-5c41d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158176338684:android:51d3fcc2d186dad8f92d79",
+        "android_client_info": {
+          "package_name": "com.nota.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmxzZqJxdDE3q8IspgdMkvoDeYAAeGNsA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
