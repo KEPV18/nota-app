@@ -28,6 +28,10 @@ jobs:
           java-version: '17'
 
       - name: Set up Android SDK
+      - name: Accept Android Licenses
+  run: |
+    yes | sudo sdkmanager --licenses
+    sudo sdkmanager "build-tools;34.0.0"
         uses: android-actions/setup-android@v3
 
       - name: Make gradlew executable
