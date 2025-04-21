@@ -1,5 +1,5 @@
-apply plugin: "com.android.application"
-apply plugin: "com.facebook.react"
+apply plugin: 'com.android.application' // تطبيق الـ Plugin هنا
+apply plugin: 'com.facebook.react'
 apply plugin: 'com.google.gms.google-services'
 
 react {
@@ -10,14 +10,13 @@ react {
 }
 
 android {
-    ndkVersion rootProject.ext.ndkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
-    compileSdk rootProject.ext.compileSdkVersion
+    compileSdk 34
+    buildToolsVersion "34.0.0"
 
     defaultConfig {
         applicationId "com.nota.app"
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdk 23
+        targetSdk 34
         versionCode 1
         versionName "1.0"
     }
@@ -37,8 +36,8 @@ android {
         }
         release {
             signingConfig signingConfigs.debug
-            minifyEnabled enableProguardInReleaseBuilds
-            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
@@ -49,6 +48,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.firebase:firebase-firestore'
     
-    implementation("com.facebook.react:react-android")
-    implementation("com.facebook.react:hermes-android")
-} 
+    implementation("com.facebook.react:react-android:+")
+    implementation("com.facebook.react:hermes-android:+")
+}
+
+apply from: new File(["node", "--print", "require.resolve('@react-native-community/cli-platform-android/package.json')"].execute(null, rootDir).text.trim(), "../native_modules.gradle")
+applyNativeModulesAppBuildGradle(project)
