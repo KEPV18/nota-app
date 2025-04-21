@@ -30,7 +30,7 @@ jobs:
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Accept Android Licenses  # هذه الخطوة ضرورية
+      - name: Accept Android Licenses
         run: |
           yes | sudo $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
           sudo $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platforms;android-34" "build-tools;34.0.0"
@@ -41,7 +41,7 @@ jobs:
       - name: Build Android APK
         run: |
           cd android
-          ./gradlew clean assembleDebug --stacktrace  # أضف --stacktrace لتتبع الأخطاء
+          ./gradlew clean assembleDebug --stacktrace --info
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
