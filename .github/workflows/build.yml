@@ -13,10 +13,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Node.js 20.x  # التعديل الرئيسي هنا
+      - name: Set up Node.js 20.x
         uses: actions/setup-node@v4
         with:
-          node-version: 20.x  # أو 18.x
+          node-version: 20.x
 
       - name: Install dependencies
         run: npm install
@@ -28,11 +28,12 @@ jobs:
           java-version: '17'
 
       - name: Set up Android SDK
-      - name: Accept Android Licenses
-  run: |
-    yes | sudo sdkmanager --licenses
-    sudo sdkmanager "build-tools;34.0.0"
         uses: android-actions/setup-android@v3
+
+      - name: Accept Android Licenses  # هذه الخطوة ضرورية
+        run: |
+          yes | sudo $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
+          sudo $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platforms;android-34" "build-tools;34.0.0"
 
       - name: Make gradlew executable
         run: chmod +x android/gradlew
@@ -40,7 +41,7 @@ jobs:
       - name: Build Android APK
         run: |
           cd android
-          ./gradlew clean assembleDebug  # أضف clean لإزالة الملفات القديمة
+          ./gradlew clean assembleDebug --stacktrace  # أضف --stacktrace لتتبع الأخطاء
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
