@@ -13,15 +13,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: Set up Node.js 20.x  # التعديل الرئيسي هنا
         uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version: 20.x  # أو 18.x
 
       - name: Install dependencies
         run: npm install
 
-      - name: Set up JDK
+      - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -36,7 +36,7 @@ jobs:
       - name: Build Android APK
         run: |
           cd android
-          ./gradlew assembleDebug
+          ./gradlew clean assembleDebug  # أضف clean لإزالة الملفات القديمة
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
