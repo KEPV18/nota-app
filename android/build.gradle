@@ -1,18 +1,19 @@
 // Top-level build.gradle
+// Top-level build file
 buildscript {
     repositories {
-        google() // مطلوب لـ Android Gradle Plugin
+        google()
         mavenCentral()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:8.3.0" // AGP 8.3.0
+        classpath "com.android.tools.build:gradle:8.3.0"
         classpath "com.google.gms:google-services:4.4.0"
-        classpath "com.facebook.react:react-native-gradle-plugin:0.74.1" // إصدار React Native Gradle Plugin
+        classpath "com.facebook.react:react-native-gradle-plugin:0.74.1" // تأكد من تطابق الإصدار مع React Native
     }
 }
 
 plugins {
-    id 'com.android.application' apply false
+    id 'com.android.application' apply false // لا تطبيق هنا
     id 'com.facebook.react' apply false
 }
 
