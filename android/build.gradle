@@ -1,7 +1,20 @@
+// Top-level build file
+buildscript {
+    repositories {
+        google() // ضروري لـ Android Gradle Plugin
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:8.2.0" // إصدار متوافق مع Gradle 8.13
+        classpath "com.google.gms:google-services:4.4.0" // إصدار حديث لـ Google Services
+    }
+}
+
 plugins {
     id 'com.android.application'
     id 'com.facebook.react'
 }
+
 apply plugin: 'com.google.gms.google-services'
 
 react {
@@ -53,4 +66,12 @@ dependencies {
     
     implementation("com.facebook.react:react-android")
     implementation("com.facebook.react:hermes-android")
-} 
+}
+
+allprojects {
+    repositories {
+        google() // مطلوب لمكتبات Android
+        mavenCentral()
+        maven { url "https://www.jitpack.io" }
+    }
+}
